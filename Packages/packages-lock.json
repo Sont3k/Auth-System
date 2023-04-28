@@ -9,6 +9,13 @@
       },
       "hash": "a7f502e4bba2416411c64b1160dc01d53da75fcd"
     },
+    "com.cysharp.unitask": {
+      "version": "https://github.com/Cysharp/UniTask.git?path=src/UniTask/Assets/Plugins/UniTask",
+      "depth": 0,
+      "source": "git",
+      "dependencies": {},
+      "hash": "305695ad5d194dda0d6b00777c2459202a1ef4ea"
+    },
     "com.unity.2d.animation": {
       "version": "7.0.4",
       "depth": 1,
