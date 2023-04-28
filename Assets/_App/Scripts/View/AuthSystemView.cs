@@ -1,11 +1,14 @@
 using System;
+using TMPro;
 using UnityEngine;
-using UnityEngine.UI;
+using Button = UnityEngine.UI.Button;
 
 namespace _App.Scripts.View
 {
     public class AuthSystemView : MonoBehaviour
     {
+        [Header("References")]
+        [SerializeField] private TMP_Text _consoleLog;
         [SerializeField] private Button _authButton;
 
         public event Action OnAuthButtonPress;
@@ -18,6 +21,11 @@ namespace _App.Scripts.View
         private void OnDisable()
         {
             _authButton.onClick.RemoveAllListeners();
+        }
+
+        public void SetLogText(string text)
+        {
+            _consoleLog.text += text;
         }
     }
 }

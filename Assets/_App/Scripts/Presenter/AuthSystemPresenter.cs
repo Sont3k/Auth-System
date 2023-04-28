@@ -12,6 +12,8 @@ namespace _App.Scripts.Presenter
         private readonly AuthSystemView _authSystemView;
         private readonly UserDataModel _userDataModel;
 
+        private AccessTokenResponse _accessTokenResponse; // saved token
+
         public AuthSystemPresenter(AuthSystemView authSystemView, UserDataModel userDataModel)
         {
             _authSystemView = authSystemView;
@@ -38,18 +40,24 @@ namespace _App.Scripts.Presenter
 
             // Opens a browser to log user in
             var accessTokenResponse = await authenticationSession.AuthenticateAsync();
-
             // Authentication header can be used to make authorized http calls.
             var authenticationHeader = accessTokenResponse.GetAuthenticationHeader();
-
             // Gets the current acccess token, or refreshes if it is expired.
-            accessTokenResponse = await authenticationSession.GetOrRefreshTokenAsync();
+            _accessTokenResponse = await authenticationSession.GetOrRefreshTokenAsync();
 
-            // Gets new access token by using the refresh token.
-            var newAccessTokenResponse = await authenticationSession.RefreshTokenAsync();
+            UpdateViewText();
+        }
 
-            // Or you can get new access token with specified refresh token (i.e. stored on the local disk to prevent multiple sign-in for each app launch)
-            newAccessTokenResponse = await authenticationSession.RefreshTokenAsync("my_refresh_token");
+        private void UpdateViewText()
+        {
+            var data =
+                $"Access Token: {_accessTokenResponse.accessToken}\n" +
+                $"Expires At: {_accessTokenResponse.expiresAt}\n" +
+                $"Issued At: {_accessTokenResponse.issuedAt}\n" +
+                $"Refresh Token: {_accessTokenResponse.refreshToken}\n" +
+                $"Scope: {_accessTokenResponse.scope}\n" +
+                $"Token Type: {_accessTokenResponse.tokenType}\n"; 
+            _authSystemView.SetLogText(data);
         }
     }
 }
