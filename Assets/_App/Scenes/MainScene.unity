@@ -801,7 +801,7 @@ MonoBehaviour:
   _authorizationCodeErrorEnabled: 0
   _authorizationCodeError: 0
   _accessTokenResponses:
-  - username: AuthUser
+  - username: user
     accessTokenErrorEnabled: 0
     accessTokenError: 0
     accessTokenErrorOnRefreshEnabled: 0
