@@ -8,15 +8,16 @@ namespace _App.Scripts.Model
         public string ClientID { get; set; }
         public string RedirectUri { get; set; }
         public string Scope { get; set; }
+        public string ServerUri { get; set; }
 
         public AuthorizationCodeFlow GetAuthFlow()
         {
-            return new GitHubAuth(new AuthorizationCodeFlow.Configuration
+            return new MockServerAuth(new AuthorizationCodeFlow.Configuration
             {
                 clientId = ClientID,
                 redirectUri = RedirectUri,
                 scope = Scope
-            });
+            }, ServerUri);
         }
     }
 }
