@@ -42,7 +42,7 @@ namespace _App.Scripts.Presenter
             var accessTokenResponse = await authenticationSession.AuthenticateAsync();
             // Authentication header can be used to make authorized http calls.
             var authenticationHeader = accessTokenResponse.GetAuthenticationHeader();
-            // Gets the current acccess token, or refreshes if it is expired.
+            // Gets the current access token, or refreshes if it is expired.
             _accessTokenResponse = await authenticationSession.GetOrRefreshTokenAsync();
 
             UpdateViewText();
