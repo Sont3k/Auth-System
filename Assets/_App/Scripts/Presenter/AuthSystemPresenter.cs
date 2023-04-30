@@ -38,11 +38,7 @@ namespace _App.Scripts.Presenter
 
             using var authenticationSession = new AuthenticationSession(_userDataModel.GetAuthFlow(), crossPlatformBrowser);
 
-            // Opens a browser to log user in
-            var accessTokenResponse = await authenticationSession.AuthenticateAsync();
-            // Authentication header can be used to make authorized http calls.
-            var authenticationHeader = accessTokenResponse.GetAuthenticationHeader();
-            // Gets the current access token, or refreshes if it is expired.
+            await authenticationSession.AuthenticateAsync();
             _accessTokenResponse = await authenticationSession.GetOrRefreshTokenAsync();
 
             UpdateViewText();
