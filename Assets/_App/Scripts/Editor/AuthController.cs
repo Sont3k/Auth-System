@@ -1,28 +1,22 @@
-﻿using _App.Scripts.Model;
-using _App.Scripts.View;
+﻿using _App.Scripts.Editor.Model;
 using Cdm.Authentication.Browser;
 using Cdm.Authentication.OAuth2;
 using Cysharp.Threading.Tasks;
 using UnityEngine;
 
-namespace _App.Scripts.Presenter
+namespace _App.Scripts.Editor
 {
-    public class AuthSystemPresenter
+    public class AuthController
     {
-        private readonly AuthSystemView _authSystemView;
         private readonly UserDataModel _userDataModel;
-
         private AccessTokenResponse _accessTokenResponse; // saved token
 
-        public AuthSystemPresenter(AuthSystemView authSystemView, UserDataModel userDataModel)
+        public AuthController(UserDataModel userDataModel)
         {
-            _authSystemView = authSystemView;
             _userDataModel = userDataModel;
-
-            _authSystemView.OnAuthButtonPress += HandleWrappedAuthButton;
         }
 
-        private void HandleWrappedAuthButton()
+        public void HandleWrappedAuthButton()
         {
             HandleAuthButton().Forget();
         }
@@ -41,19 +35,19 @@ namespace _App.Scripts.Presenter
             await authenticationSession.AuthenticateAsync();
             _accessTokenResponse = await authenticationSession.GetOrRefreshTokenAsync();
 
-            UpdateViewText();
+            // UpdateViewText();
         }
 
-        private void UpdateViewText()
-        {
-            var data =
-                $"Access Token: {_accessTokenResponse.accessToken}\n" +
-                $"Expires At: {_accessTokenResponse.expiresAt}\n" +
-                $"Issued At: {_accessTokenResponse.issuedAt}\n" +
-                $"Refresh Token: {_accessTokenResponse.refreshToken}\n" +
-                $"Scope: {_accessTokenResponse.scope}\n" +
-                $"Token Type: {_accessTokenResponse.tokenType}\n"; 
-            _authSystemView.SetLogText(data);
-        }
+        // private void UpdateViewText()
+        // {
+        //     var data =
+        //         $"Access Token: {_accessTokenResponse.accessToken}\n" +
+        //         $"Expires At: {_accessTokenResponse.expiresAt}\n" +
+        //         $"Issued At: {_accessTokenResponse.issuedAt}\n" +
+        //         $"Refresh Token: {_accessTokenResponse.refreshToken}\n" +
+        //         $"Scope: {_accessTokenResponse.scope}\n" +
+        //         $"Token Type: {_accessTokenResponse.tokenType}\n"; 
+        //     _authSystemView.SetLogText(data);
+        // }
     }
 }

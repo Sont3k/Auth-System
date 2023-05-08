@@ -1,7 +1,7 @@
 ﻿using Cdm.Authentication.Clients;
 using Cdm.Authentication.OAuth2;
 
-namespace _App.Scripts.Model
+namespace _App.Scripts.Editor.Model
 {
     public class UserDataModel
     {
