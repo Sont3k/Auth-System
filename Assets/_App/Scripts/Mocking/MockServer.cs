@@ -41,15 +41,15 @@ namespace _App.Scripts.Mocking
             "  </body>" +
             "</html>";
 
-        private readonly HttpListener _httpListener;
+        private HttpListener _httpListener;
         private Task _listenTask;
-        private bool _runServer = false;
+        private bool _runServer;
 
         private string _authorizationCode;
         private AuthorizationCodeRequest _authorizationCodeRequest;
         private MockServerAccessTokenResponse _accessTokenResponse;
 
-        public MockServer()
+        public void StartServer()
         {
             _httpListener = new HttpListener();
             _httpListener.Prefixes.Add(ServerUrl);
@@ -59,7 +59,7 @@ namespace _App.Scripts.Mocking
             _runServer = true;
         }
 
-        ~MockServer()
+        public void StopServer()
         {
             _runServer = false;
             _httpListener?.Close();
