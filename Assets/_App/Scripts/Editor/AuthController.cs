@@ -10,7 +10,7 @@ namespace _App.Scripts.Editor
     {
         private readonly UserDataModel _userDataModel;
         private AccessTokenResponse _accessTokenResponse; // saved token
-        public string AccessTokenResponseLog { get; set; }
+        public string AccessTokenResponseLog { get; private set; }
 
         public AuthController(UserDataModel userDataModel)
         {
