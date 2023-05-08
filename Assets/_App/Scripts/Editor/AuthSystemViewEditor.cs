@@ -35,6 +35,8 @@ namespace _App.Scripts.Editor
             {
                 _authController.HandleWrappedAuthButton();
             }
+            
+            GUILayout.Label(_authController.AccessTokenResponseLog);
         }
 
         private void InitMockServer()

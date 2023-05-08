@@ -10,6 +10,7 @@ namespace _App.Scripts.Editor
     {
         private readonly UserDataModel _userDataModel;
         private AccessTokenResponse _accessTokenResponse; // saved token
+        public string AccessTokenResponseLog { get; set; }
 
         public AuthController(UserDataModel userDataModel)
         {
@@ -35,19 +36,19 @@ namespace _App.Scripts.Editor
             await authenticationSession.AuthenticateAsync();
             _accessTokenResponse = await authenticationSession.GetOrRefreshTokenAsync();
 
-            // UpdateViewText();
+            UpdateViewText();
         }
 
-        // private void UpdateViewText()
-        // {
-        //     var data =
-        //         $"Access Token: {_accessTokenResponse.accessToken}\n" +
-        //         $"Expires At: {_accessTokenResponse.expiresAt}\n" +
-        //         $"Issued At: {_accessTokenResponse.issuedAt}\n" +
-        //         $"Refresh Token: {_accessTokenResponse.refreshToken}\n" +
-        //         $"Scope: {_accessTokenResponse.scope}\n" +
-        //         $"Token Type: {_accessTokenResponse.tokenType}\n"; 
-        //     _authSystemView.SetLogText(data);
-        // }
+        private void UpdateViewText()
+        {
+            var data =
+                $"Access Token: {_accessTokenResponse.accessToken}\n" +
+                $"Expires At: {_accessTokenResponse.expiresAt}\n" +
+                $"Issued At: {_accessTokenResponse.issuedAt}\n" +
+                $"Refresh Token: {_accessTokenResponse.refreshToken}\n" +
+                $"Scope: {_accessTokenResponse.scope}\n" +
+                $"Token Type: {_accessTokenResponse.tokenType}\n"; 
+            AccessTokenResponseLog = data;
+        }
     }
 }
