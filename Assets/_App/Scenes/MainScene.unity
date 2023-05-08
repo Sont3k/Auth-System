@@ -207,7 +207,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &2114767781
+--- !u!1 &557432534
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -215,45 +215,36 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 2114767783}
-  - component: {fileID: 2114767782}
+  - component: {fileID: 557432536}
+  - component: {fileID: 557432535}
   m_Layer: 0
-  m_Name: MockServer
+  m_Name: Auth System
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &2114767782
+--- !u!114 &557432535
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2114767781}
+  m_GameObject: {fileID: 557432534}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: eddc97dede4b4c66bed0e02c11fd3a6d, type: 3}
+  m_Script: {fileID: 11500000, guid: a21ed63535b34acf9d9ad8b8962fa7f3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _serverUrl: http://localhost:8001/
-  _authorizationCodeErrorEnabled: 0
-  _authorizationCodeError: 0
-  _accessTokenResponses:
-  - username: user
-    accessTokenErrorEnabled: 0
-    accessTokenError: 0
-    accessTokenErrorOnRefreshEnabled: 0
-    accessTokenErrorOnRefresh: 0
---- !u!4 &2114767783
+--- !u!4 &557432536
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2114767781}
+  m_GameObject: {fileID: 557432534}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 379.83908, y: 534.06085, z: -5.644023}
+  m_LocalPosition: {x: 205.95084, y: 328.5657, z: -13.074344}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

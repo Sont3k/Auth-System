@@ -4,17 +4,12 @@ using UnityEngine;
 
 namespace _App.Scripts.Editor
 {
-    public class AuthSystemViewEditor : EditorWindow
+    [CustomEditor(typeof(AuthSystemView))]
+    public class AuthSystemViewEditor : UnityEditor.Editor
     {
         private MockServer _mockServer;
         private AuthService _authService;
         private AuthController _authController;
-        
-        [MenuItem("Tools/Auth System Window")]
-        public static void ShowWindow()
-        {
-            GetWindow<AuthSystemViewEditor>("Auth System");
-        }
 
         private void Awake()
         {
@@ -24,12 +19,7 @@ namespace _App.Scripts.Editor
             _mockServer.StartServer();
         }
 
-        private void OnDestroy()
-        {
-            _mockServer.StopServer();
-        }
-
-        public void OnGUI()
+        public override void OnInspectorGUI()
         {
             if (GUILayout.Button("Auth"))
             {
@@ -39,6 +29,11 @@ namespace _App.Scripts.Editor
             GUILayout.Label(_authController.AccessTokenResponseLog);
         }
 
+        private void OnDestroy()
+        {
+            _mockServer.StopServer();
+        }
+        
         private void InitMockServer()
         {
             _mockServer = new MockServer();
