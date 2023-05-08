@@ -27,7 +27,6 @@ namespace _App.Scripts.Editor
         private void OnDestroy()
         {
             _mockServer.StopServer();
-
         }
 
         public void OnGUI()

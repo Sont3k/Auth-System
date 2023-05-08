@@ -51,12 +51,12 @@ namespace _App.Scripts.Mocking
 
         public void StartServer()
         {
+            _runServer = true;
             _httpListener = new HttpListener();
             _httpListener.Prefixes.Add(ServerUrl);
             _httpListener.Start();
 
             _listenTask = HandleIncomingConnectionsAsync();
-            _runServer = true;
         }
 
         public void StopServer()
