@@ -36,10 +36,10 @@ namespace _App.Scripts.Editor
             await authenticationSession.AuthenticateAsync();
             _accessTokenResponse = await authenticationSession.GetOrRefreshTokenAsync();
 
-            UpdateViewText();
+            UpdateAccessTokenResponseLog();
         }
 
-        private void UpdateViewText()
+        private void UpdateAccessTokenResponseLog()
         {
             var data =
                 $"Access Token: {_accessTokenResponse.accessToken}\n" +
